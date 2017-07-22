@@ -1,19 +1,28 @@
-module.exports = ClozeCard;
-
 function ClozeCard(text, cloze){
 	this.cloze = cloze;
 	this.fullText = text;
 	this.getPartial = function(){
 		return this.fullText.toLowerCase().trim().includes(this.cloze.toLowerCase().trim()) ? 
-				this.fullText.split(this.cloze.toLowerCase()).join('....') : 
+				this.fullText.split(this.cloze).join('....') : 
 				console.log(this.cloze+" doesn't appear in "+this.fullText);
 		 
 	};
 	this.partial = this.getPartial();
 };
 
-var flash=new ClozeCard("George washington is the first president", "george washington ");
-console.log(flash.partial);
+var firstPresidentCloze = new ClozeCard(
+    "George Washington was the first president of the United States.", "George Washington");
 
-var flash1 = new ClozeCard("I am a dog and a cat", "DOG");
-console.log(flash1.partial);
+// "George Washington"
+console.log(firstPresidentCloze.cloze); 
+
+// " ... was the first president of the United States.
+console.log(firstPresidentCloze.partial); 
+
+// "George Washington was the first president of the United States.
+console.log(firstPresidentCloze.fullText);
+
+// Should throw or log an error because "oops" doesn't appear in "This doesn't work"
+var brokenCloze = new ClozeCard("This doesn't work", "oops");
+
+module.exports = ClozeCard;

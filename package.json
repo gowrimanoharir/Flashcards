@@ -1,0 +1,22 @@
+{
+  "name": "flashcards",
+  "version": "1.0.0",
+  "description": "",
+  "main": "BasicCard.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gowrimanoharir/Flashcards.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gowrimanoharir/Flashcards/issues"
+  },
+  "homepage": "https://github.com/gowrimanoharir/Flashcards#readme",
+  "dependencies": {
+    "inquirer": "^3.2.0"
+  }
+}
