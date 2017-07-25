@@ -2,17 +2,17 @@ function ClozeCard(text, cloze){
 	if(this instanceof ClozeCard){
 		this.cloze = cloze;
 		this.fullText = text;
-		this.getPartial = function(){
-			return this.fullText.toLowerCase().trim().includes(this.cloze.toLowerCase().trim()) ? 
-					this.fullText.split(this.cloze).join('....') : 
-					console.log(this.cloze+" doesn't appear in "+this.fullText);
-			
-		};
 		this.partial = this.getPartial();
 	}
 	else{
 		return new ClozeCard(text, cloze);
 	}
+};
+
+ClozeCard.prototype.getPartial = function(){
+			return this.fullText.toLowerCase().trim().includes(this.cloze.toLowerCase().trim()) ? 
+					this.fullText.split(this.cloze).join('....') : 
+					console.log(this.cloze+" doesn't appear in "+this.fullText);
 };
 
 var firstPresidentCloze = ClozeCard(

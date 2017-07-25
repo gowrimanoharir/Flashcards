@@ -33,7 +33,6 @@ function getFlashCardType(){
 }
 
 function getFlashCards(){
-
 		inquirer.prompt([
 
 		{
@@ -68,8 +67,31 @@ function getFlashCards(){
 				getFlashCards();
 			}
 			else{
-				console.log(flashcards);
+					inquirer.prompt(
+					{
+					type: "list",
+					name: "play",
+					message: "Do you want to play the Flash Cards or end session?",
+					choices: ["Play", "End"]
+					}
+
+					).then(function(response3){
+						
+						if(response3.play==='Play'){
+							playFlashCards();
+						}
+						else{
+							console.log('Thank you, Have a Good Day!!')
+						}
+				});
 			}
+	});
+
+}
+
+function playFlashCards(){
+	flashcards.forEach(function(card){
+		type==='Basic' ? console.log(card.front): console.log(card.partial);
 	});
 
 }

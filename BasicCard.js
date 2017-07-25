@@ -8,7 +8,7 @@ function BasicCard(front, back){
 	}
 };
 
-var firstPresident = new BasicCard(
+var firstPresident = BasicCard(
     "Who was the first president of the United States?", "George Washington");
 
 // "Who was the first president of the United States?"
