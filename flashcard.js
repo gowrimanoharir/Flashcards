@@ -89,9 +89,36 @@ function getFlashCards(){
 
 }
 
+var count = 0;
 function playFlashCards(){
-	flashcards.forEach(function(card){
-		type==='Basic' ? console.log(card.front): console.log(card.partial);
-	});
-
+		if(count<flashcards.length){
+			card = flashcards[count];
+			type==='Basic' ? console.log(card.front): console.log(card.partial);
+			inquirer.prompt({
+				type:  "confirm",
+				message: "Move to Next card?",
+				name: "continue",
+				default: false
+			}).then(function(response4){
+				type==='Basic' ? console.log(card.back) : console.log(card.fullText);
+				count++;
+				playFlashCards();
+			});
+		}
+		else{
+			inquirer.prompt({
+				type:  "confirm",
+				message: "Do you want to continue playing",
+				name: "continue",
+				default: false
+			}).then(function(response5){
+				if(response5.continue){
+					count=0;
+					playFlashCards();
+				}
+				else{
+					console.log("Thanks for playing!!");
+				}
+			});			
+		}
 }
